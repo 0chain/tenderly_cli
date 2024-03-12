@@ -1,11 +1,8 @@
-# NftTracker
+# TenderlyCLI
 
-This repository contains the implementation of NFT event tracker node, used to scan NFT related events for the upcoming
-transaction, scan all NFT related events for the given block range and have a standardized data representation.
+This repository contains the implementation of Tenderly CLI, used to simplify interaction with Tenderly API, intended to expose basic comamnds.
 
 ## Setup
-
-### Single node launch
 
 It's required to execute the following command to build the node:
 
@@ -13,35 +10,28 @@ It's required to execute the following command to build the node:
 make build
 ```
 
-After a successful build process, the following command needs to be executed to start a single node:
+The built file is located at **./build** directory.
 
+## Examples
+
+The following command represents request to Tenderly API, which provokes balance to be set to be equal to the given value:
 ```shell
-make start
+tenderly_cli set-balance --host="https://rpc.tenderly.co/fork/34689cb9-e797-4786-8a1e-9512e3183222" --wallet="0xfda881a5f23c62b75f76390Ee8aBFA441F681A0e" --amount=10
 ```
 
-The following table represents all the parameters that can be redefined using **GNU Make** build configuration file:
-
-| Name | Default value |
--------|--------------|
-graphHost  | localhost    |
-graphPort | 9096         |
-listenerHost  | localhost    |
-listenerPort | 9097         |
-registratorHost  | localhost    |
-registratorPort | 9098         |
-databaseHost  | localhost    |
-sync | false        |
-
-### Documentation
-
-![start.png](code/go/0chain.net/nft_tracker/docs/start.png)
-
-For detailed guidelines on scalable deployment processes and comprehensive documentation on the internal workflow of the nft_tracker node, please refer to the 0chain project GitBook.
-
-## Tests
-
-To run tests, the appropriate **GNU Make** target must be executed using the following command:
-
+The following command represents request to Tenderly API, which provokes balance to be increased by the given value:
 ```shell
-make test
+tenderly_cli add-balance --host="https://rpc.tenderly.co/fork/34689cb9-e797-4786-8a1e-9512e3183222" --wallet="0xfda881a5f23c62b75f76390Ee8aBFA441F681A0e" --amount=10
 ```
+
+The following command represents request to Tenderly API, which provokes balance of the selected ERC20 smart contract to be set to be equal to the given value:
+```shell
+tenderly_cli set-erc20-balance --host="https://rpc.tenderly.co/fork/34689cb9-e797-4786-8a1e-9512e3183222" --wallet="0xfda881a5f23c62b75f76390Ee8aBFA441F681A0e" --token="0xb9EF770B6A5e12E45983C5D80545258aA38F3B78" --amount=10
+```
+
+The following command represents request to Tenderly API, which provokes balance of the selected ERC20 smart contract to be increased by the given value:
+```shell
+tenderly_cli add-erc20-balance --host="https://rpc.tenderly.co/fork/34689cb9-e797-4786-8a1e-9512e3183222" --wallet="0xfda881a5f23c62b75f76390Ee8aBFA441F681A0e" --token="0xb9EF770B6A5e12E45983C5D80545258aA38F3B78" --amount=10
+```
+
+> Remember that the value expected to be in **ETH**

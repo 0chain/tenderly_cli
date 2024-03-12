@@ -58,8 +58,8 @@ func CreateAmountOption() *Option {
 		name:         OptionAmount,
 		value:        int64(0),
 		typename:     "int64",
-		usage:        "amount of tokens to be set",
-		missingError: "amount of tokens to be set for the previously given resource",
+		usage:        "amount of tokens to be set(the value is intended to be in ETH)",
+		missingError: "amount of tokens to be set for the previously given resource should be set",
 		required:     true,
 	}
 }
