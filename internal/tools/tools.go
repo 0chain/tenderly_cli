@@ -13,7 +13,5 @@ func CreateProviderClient(url string) jsonrpc.RPCClient {
 
 // ConvertIntToHex converts given int value to hex string.
 func ConvertIntToHex(value uint64) string {
-	// 0x56BC75E2D63100000
-
 	return fmt.Sprintf("%#x", value)
 }
